@@ -1,0 +1,87 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{graphicx}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+
+\title{Universidade Federal do Espírito Santo\\Departamento de Informática\\Profa Claudia Boeres\\Teoria dos Grafos 2014/2\\ \textbf{Trabalho Computacional}}
+\date{}
+
+\pdfinfo{%
+  /Title    ()
+  /Author   ()
+  /Creator  ()
+  /Producer ()
+  /Subject  ()
+  /Keywords ()
+}
+
+\begin{document}
+\maketitle
+
+\section{Descrição do problema}
+ \begin{large}
+\textbf{Enviando emails}
+\end{large}
+\newline
+\newline
+Considere uma rede composta por $n$ servidores SMTP ligados por $m$
+cabos de rede. Cada um dos m cabos conecta dois computadores e tem
+uma certa latência medida em milissegundos necessária para enviar
+uma mensagem de e-mail. Faça um programa que calcule o menor tempo
+necessário para enviar uma mensagem do servidor $S$ ao servidor $T$
+por uma sequência de cabos. Assume-se que não há atrasos
+incorridos em qualquer um dos servidores. Use o algoritmo de
+Dijkstra na resolução desse problema.
+\subsection{Entrada de Dados}
+
+A entrada de dados consiste em um arquivo composto de vários
+conjuntos de teste, dispostos em sequencia no arquivo e separados
+por uma linha em branco. A organização das linhas de cada conjunto
+de teste é dada por:
+
+\begin{enumerate}
+\item A primeira linha do conjunto de teste contém o número n de
+computadores a serem conectados, com $2 \leq n \leq 20000$; o número
+$m$ de cabos da rede $(0 \leq m \leq 50000)$; e os rótulos
+identificadores de $S (0 \leq S < n)$ e $T (0 \leq T < n)$, $S \neq
+ T$;
+ 
+ \item As próximas $m$ linhas do conjunto de teste descrevem
+informações de cada cabo de rede. Cada uma dessas linhas
+devem conter os números identificadores dos servidores
+conectados por um cabo bidirecional (com rótulos
+identificadores no intervalo $[0, n-1]$), além do valor da
+latência $w$, ao longo do cabo $(0 \leq w \leq 10000)$.
+
+\end{enumerate}
+
+\subsection{Saída de Dados}
+O arquivo de saída deve conter cada linha (separada por linhas em
+branco) referente à resposta do seu programa para cada conjunto de
+teste. Assim, cada linha deve possuir a informação do número de
+milissegundos requeridos para enviar uma mensagem de $S$ a $T$. Se há
+um caminho entre $S$ e $T$, a mensagem emitida pelo programa deve ser
+“Envio de mensagens de $<S>$ a $<T>$: $<tempo em ms>$.”. Caso contrário,
+a mensagem deve ser: “Envio de mensagens de $<S>$ a $<T>$: não há
+caminho entre $<S>$ e $<T>$.”.
+
+\subsubsection{Exemplo}
+
+
+\includegraphics[scale=0.5]{graph.png}
+
+\section{ Instâncias de Teste}
+
+Os algoritmos devem ser executados para pelo menos 5
+redes de entrada (a primeira delas deve ser referente
+aos exemplos dados para cada problema). As outras 4
+redes podem ser geradas com valores distintos de $n$ e $m$,
+mas respeitando o máximo de $n$ = 150 nós.
+
+
+\section{Linguagem de Programação}
+
+A escolha da linguagem de programação é livre.
+
+\end{document}
