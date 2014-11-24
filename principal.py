@@ -12,11 +12,6 @@ while line != '':
     source = int(line[4])
     target = int(line[6])
 
-#    print n
-#    print m
-#    print source
-#    print target
-
     lista_grafos.append(Grafo(n,m))
 
     for i in range(m):
