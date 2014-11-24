@@ -14,5 +14,8 @@ class Grafo:
         self.lista_arestas.append(aresta)
         self.lista_arestas_pesos.append(peso)
 
+    def dijkstra(source,target):
+        return "Menor caminho"
+
     def __str__(self):
         return 'Arestas: ' + ','.join(map(str,self.lista_arestas)) + '\nPesos: ' + ','.join(map(str,self.lista_arestas_pesos))
