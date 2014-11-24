@@ -5,6 +5,7 @@ class Grafo:
         self.lista_vertices = []
         self.lista_arestas = []
         self.lista_arestas_pesos = []
+        
     def add_vertice(self,vertice):
         if not vertice in self.lista_vertices:
             self.lista_vertices.append(vertice)

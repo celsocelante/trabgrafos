@@ -3,6 +3,7 @@ f = open('entrada.txt', 'r')
 
 lista_grafos = []
 j=0;
+
 line = f.readline().rstrip()
 while line != '':
 
