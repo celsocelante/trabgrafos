@@ -31,3 +31,4 @@ class Grafo:
 
     def __str__(self):
         return 'Arestas: ' + ','.join(map(str,self.lista_arestas)) + '\nPesos: ' + ','.join(map(str,self.lista_arestas_pesos))
+
