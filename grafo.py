@@ -1,34 +1,75 @@
+from filaminima import Fila
+
 class Grafo:
     "Classe de um grafo"
     def __init__(self,n,m):
         self.n=n
         self.m=m
-        self.lista_vertices = []
-        self.lista_arestas = [] 
-        self.lista_arestas_pesos = []
-        self.lista_vertices_pesos = []
+        self.lista_adjacencias = {}
 
-    def add_vertice(self,vertice):
-        if not vertice in self.lista_vertices:
-            self.lista_vertices.append({vertice : 0})
-            self.lista_vertices_pesos.append(float('inf'))
+    def add_aresta(self, v, u, peso):
+        if v not in self.lista_adjacencias.keys() :
+            self.lista_adjacencias[v] = {u : peso}
+        else : self.lista_adjacencias[v][u] = peso
 
-    def add_aresta(self,aresta,peso):
-        self.lista_arestas.append(aresta)
-        self.lista_arestas_pesos.append(peso)
+        if u not in self.lista_adjacencias.keys():
+            self.lista_adjacencias[u] = {v : peso}
+        else : self.lista_adjacencias[u][v] = peso
 
     def dijkstra(self,inicial):
-        #Inicializa distancia do vertice inicial com zero
-        #rever
-        pos = self.lista_vertices.index(inicial.key())
-        self.lista_vertices_pesos.index(pos) = 0
 
-        lista_vertices_fechados = []
-        lista_vertices_abertos = self.lista_vertices
+        distancias = {} 
+        fila_prioridade = Fila()
+        predecessor = {}
 
-        #while not lista_vertice_abertos.isEmpty():
+        for vertice in self.lista_adjacencias:
+            distancias[vertice] = 10000
+            fila_prioridade.push(vertice,distancias[vertice])
+            predecessor[vertice] = -1
 
+        fila_prioridade.push(inicial,0)
+        distancias[inicial] = 0
+        #predecessor[inicial] = inicial
+
+        while fila_prioridade.vazia():
+            ultimo_fechado = fila_prioridade.pop()
+
+            for vizinho in self.lista_adjacencias[ultimo_fechado].keys():
+                distancia = self.lista_adjacencias[ultimo_fechado][vizinho]
+                nova_distancia = distancia + distancias[ultimo_fechado]
+                if(nova_distancia < distancias[vizinho]):
+                    fila_prioridade.push(vizinho,nova_distancia)
+                    distancias[vizinho] = nova_distancia
+                    predecessor[vizinho] = ultimo_fechado
+
+
+        print 'Arvore: ' + ','.join(map(str,predecessor.items()))
+      #  print 'Distancias: ' + ','.join(map(str,distancias.items()))
+
+        return distancias, predecessor
+
+
+    def caminhoMaisCurto(self,grafo,inicio,fim):
+
+        D, P = grafo.dijkstra(0)
+        A = dict.fromkeys(P.keys())
+
+            for v in P and e in A:
+                A[v] = P[v]
+    
+        caminho = []
+
+        while 1:
+            caminho.append(fim)
+            if fim == inicio:
+                break
+
+
+            fim = P[fim]
+
+        caminho.reverse()
+        return caminho
 
     def __str__(self):
-        return 'Arestas: ' + ','.join(map(str,self.lista_arestas)) + '\nPesos: ' + ','.join(map(str,self.lista_arestas_pesos))
+        return 'Grafo: ' + ','.join(map(str,self.lista_adjacencias.items()))
 
