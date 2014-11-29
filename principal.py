@@ -1,5 +1,7 @@
 from grafo import Grafo
 f = open('entrada.txt', 'r')
+nf = open('saida.txt', 'w')
+
 
 lista_grafos = []
 j=0;
@@ -9,8 +11,8 @@ while line != '':
 
     n = int(line[0])
     m = int(line[2])
-    source = int(line[4])
-    target = int(line[6])
+    inicio = int(line[4])
+    fim = int(line[6])
 
     lista_grafos.append(Grafo(n,m))
 
@@ -21,11 +23,10 @@ while line != '':
         peso = int(string[4:])
 
         lista_grafos[j].add_aresta(v1,v2,peso)
-        
 
-    print lista_grafos[j]
-    print lista_grafos[j].caminhoMaisCurto(lista_grafos[j],2,0)
-    
+
+    nf.write(lista_grafos[j].caminhoMaisCurto(lista_grafos[j],inicio,fim))
+
     j+=1
 
     line = f.readline().rstrip() # linha em branco

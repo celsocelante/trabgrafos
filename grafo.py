@@ -18,7 +18,7 @@ class Grafo:
 
     def dijkstra(self,inicial):
 
-        distancias = {} 
+        distancias = {}
         fila_prioridade = Fila()
         predecessor = {}
 
@@ -29,7 +29,7 @@ class Grafo:
 
         fila_prioridade.push(inicial,0)
         distancias[inicial] = 0
-        #predecessor[inicial] = inicial
+        del predecessor[inicial]
 
         while fila_prioridade.vazia():
             ultimo_fechado = fila_prioridade.pop()
@@ -43,33 +43,61 @@ class Grafo:
                     predecessor[vizinho] = ultimo_fechado
 
 
-        print 'Arvore: ' + ','.join(map(str,predecessor.items()))
-      #  print 'Distancias: ' + ','.join(map(str,distancias.items()))
+    #    print 'Arvore: ' + str(predecessor)
+    #    print 'Distancias: ' + str(distancias)
 
         return distancias, predecessor
 
 
     def caminhoMaisCurto(self,grafo,inicio,fim):
+        i = inicio
+        f = fim
+        D, P = grafo.dijkstra(inicio)
 
-        D, P = grafo.dijkstra(0)
-        A = dict.fromkeys(P.keys())
 
-            for v in P and e in A:
-                A[v] = P[v]
-    
         caminho = []
+        
+        if inicio not in P.keys() and inicio not in P.values() :
+            print caminho
+            return 'Envio de mensagens de %d a %d: nao ha caminho entre %d e %d.\n' %(i, f, i, f)
+        if fim not in P.keys() and fim not in P.values() :
+            print caminho
+            return 'Envio de mensagens de %d a %d: nao ha caminho entre %d e %d.\n' %(i, f, i, f)
 
-        while 1:
-            caminho.append(fim)
-            if fim == inicio:
-                break
+        if inicio in P.keys() :
+            while 1:
+                caminho.append(inicio)
+                if inicio == fim:
+                    break
+                inicio = P[inicio]
+        else :
+            while 1:
+                caminho.append(fim)
+                if inicio == fim:
+                    caminho.reverse()
+                    break
+                fim = P[fim]
 
 
-            fim = P[fim]
+        print caminho
+        return 'Envio de mensagens de %d a %d: %d\n' %(i, f, D[f])
 
-        caminho.reverse()
-        return caminho
 
     def __str__(self):
-        return 'Grafo: ' + ','.join(map(str,self.lista_adjacencias.items()))
+        return 'Grafo: ' + str(self.lista_adjacencias)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#
