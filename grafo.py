@@ -92,19 +92,3 @@ class Grafo:
     def __str__(self):
         # Metodo 'stringfy' da classe
         return 'Grafo: ' + str(self.lista_adjacencias)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#
