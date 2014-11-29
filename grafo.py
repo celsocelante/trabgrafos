@@ -67,11 +67,9 @@ class Grafo:
 
         # Se os vertices de entrada nao estiverem arvore de caminhos minimos, nao ha caminho entre eles
         if inicio not in P.keys() and inicio not in P.values():
-            print caminho
-            return 'Envio de mensagens de %d a %d: nao ha caminho entre %d e %d.\n' %(i, f, i, f)
+            return 'Envio de mensagens de %d a %d: nao ha caminho entre %d e %d.\n\n' %(i, f, i, f)
         if fim not in P.keys() and fim not in P.values():
-            print caminho
-            return 'Envio de mensagens de %d a %d: nao ha caminho entre %d e %d.\n' %(i, f, i, f)
+            return 'Envio de mensagens de %d a %d: nao ha caminho entre %d e %d.\n\n' %(i, f, i, f)
 
         # Determina o caminho iterando sobre a arvore de caminhos minimos
         if inicio in P.keys():
@@ -87,10 +85,8 @@ class Grafo:
                     caminho.reverse()
                     break
                 fim = P[fim]
-
-        print caminho
         # Retorna custo de envio de mensagens
-        return 'Envio de mensagens de %d a %d: %d\n' %(i, f, D[f])
+        return 'Envio de mensagens de %d a %d: %d\n\n' %(i, f, D[f])
 
 
     def __str__(self):
