@@ -1,0 +1,11 @@
+INSTRUÇÕES DE EXECUÇÃO DO PROGRAMA
+
+- Para facilitar os testes, execute o script "sh executa.sh", que executa o programa com todos os arquivos de entrada localizados no diretório "entradas" e cria um diretório para as saídas chamado "saidas".
+
+- Caso queira executar o programa para cada entrada, siga o seguinte passo:
+
+	Com o interpretador da linguagem Python instalado na máquina que executará os testes, abra o terminal e insira a seguinte linha:
+
+	"python principal.py entradas/*.txt saida.txt"
+
+	Sendo * o nome do arquivo de entrada.

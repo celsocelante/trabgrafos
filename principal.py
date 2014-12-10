@@ -28,15 +28,16 @@ linha = f.readline().rstrip()
 
 # Enquanto nao for o fim do arquivo, le todas os dados
 while linha != '':
+    parametros = linha.split(' ')
     try:
         # Armazena o numero de vertices
-        n = int(linha[0])
+        n = int(parametros[0])
         # Armazena o numero de arestas
-        m = int(linha[2])
+        m = int(parametros[1])
         # Armazena o vertice de origem
-        inicio = int(linha[4])
+        inicio = int(parametros[2])
         # Armazena o vertice de destino
-        fim = int(linha[6])
+        fim = int(parametros[3])
     except (IndexError, ValueError) as e:
         print "Arquivo de entrada inconsistente"
         exit()
@@ -49,12 +50,13 @@ while linha != '':
         try:
             # Le a linha
             linha = f.readline().rstrip()
+            parametros = linha.split(' ')
             # Armazena o primeiro vertice da aresta
-            v1 = int(linha[0])
+            v1 = int(parametros[0])
             # Armazena o segundo vertice da aresta
-            v2 = int(linha[2])
+            v2 = int(parametros[1])
             # Armazena o custo da aresta
-            peso = int(linha[4:])
+            peso = int(parametros[2])
         except (IndexError, ValueError) as e:
             print "Arquivo de entrada inconsistente"
             exit()
